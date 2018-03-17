@@ -1,7 +1,7 @@
 export default{
     data(){
         return {
-            index: '0'
+            index: ''
         }
     },
     methods: {
@@ -22,5 +22,9 @@ export default{
             this.$router.push('/password');
             this.index = 2;
         }
+    },
+    mounted(){
+        // console.log(window.location.href)
+        this.index = (window.location.href).includes('sms') ? '1': '0'
     }
 }

@@ -17,8 +17,12 @@
           <div class="tbody_list" :style="{height:height}" ref="content">
               <div>
                   <div v-for="(item,index) in memberList" :key="index">
-                    <div class="tr" @click="check(index,item)">
-                        <div class="td"><input type="radio" :value="index" v-model="value"></div>
+                    <div class="tr" @click="check(item,index)">
+                        <div class="td">
+                            <!-- <input type="checkbox" checked :value="item.username" v-model="checkedNames"> -->
+                            <!-- <div class="checkBox"></div> -->
+                            <span class="iconfont" :class="checkId.indexOf(index)>=0?'icon-yigouxuan':'icon-weigouxuan'"></span>
+                        </div>
                         <div class="td">{{item.department}}</div>
                         <div class="td">{{item.type}}</div>
                         <div class="td">{{item.username}}</div>
@@ -168,6 +172,7 @@ export {default} from './addCtr.js'
         border: 1px solid #4768f3;
         color: #4768f3;
     }
+
 </style>
 
 

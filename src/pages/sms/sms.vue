@@ -2,7 +2,7 @@
   <div class="sms">
       <div class="title">
           <div class="btn">
-              {{this.$route.query}}
+              <!-- {{this.$route.query}} -->
               <div class="add" @click="add">选择添加</div>
               <div class="delete" @click="delete1">删除人员</div>
               <div class="send" @click="send">发送消息</div>
@@ -31,14 +31,14 @@
               <div>
                   <div v-for="(item,index) in memberList" :key="index">
                     <div class="tr" @click="check(index,item)">
-                        <div class="td"><input type="radio" :value="index" v-model="value"></div>
-                        <div class="td">{{item.section}}</div>
-                        <div class="td">{{item.job}}</div>
-                        <div class="td">{{item.name}}</div>
+                        <div class="td"><input type="radio" :value="index" v-model="userIndex"></div>
+                        <div class="td">{{item.department}}</div>
+                        <div class="td">{{item.type}}</div>
+                        <div class="td">{{item.username}}</div>
                         <div class="td">{{item.phone}}</div>
                     </div>
                   </div>
-                  <div class="notice" v-if="memberList.length<=0">暂无添加人员</div>
+                  <div class="notice" v-if="memberList.length==undefined||memberList.length<=0">暂无添加人员</div>
               </div>
           </div>
       </div>
@@ -64,10 +64,8 @@
     }
     .btn{
         width: 100%;
-        /* float: right; */
         display: flex;
         display: -webkit-flex;
-        /* margin-top: 15px; */
         justify-content: space-around;
         margin-right: 5px;
         margin: 0 auto;

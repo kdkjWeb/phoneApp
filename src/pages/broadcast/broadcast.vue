@@ -6,7 +6,7 @@
       </div>
       <div class="broadcast_list" :style="{height:height}" ref="content">
           <div >
-              <div class="list" v-for="(item,index) in broadcastList" :key="index" @click="details">
+              <div class="list" v-for="(item,index) in broadcastList" :key="index" @click="details(item)">
                 <p>{{item.title}}</p>
                 <span>{{item.pubTime}}</span>
             </div>

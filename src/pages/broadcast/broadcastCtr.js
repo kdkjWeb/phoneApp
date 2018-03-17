@@ -86,8 +86,11 @@ export default{
     },
     methods:{
         //点击查看新闻详情
-        details(){
-            this.$router.push('/details')
+        details(item){
+            this.$router.push({
+                name: 'Details',
+                params: item
+            })
         },
         //获取新闻列表
         getNewsList(){

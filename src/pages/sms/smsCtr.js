@@ -6,9 +6,10 @@ export default{
             height: '',
             con: '',
             member: '',
-            value: '',
-            //memberList: []
-            memberList: [{
+            userIndex: null,
+            memberList: [],
+            isShow: ''
+            /*memberList: [{
                 section: '传媒部部',
                 job: '门管理员',
                 name: '张三部门',
@@ -93,7 +94,7 @@ export default{
                 job: '员工',
                 name: '张三',
                 phone: '15095982634'
-            }]
+            }]*/
         }
     },
     methods: {
@@ -105,14 +106,31 @@ export default{
         //删除人员按钮
         delete1(){
             console.log('你点击了删除人员按钮')
-            console.log(this.value)
-            this.memberList.splice(this.value,1);
-            this.value = ''
+            console.log(this.userIndex)
+             if(this.userIndex == null){
+                 this.$toast('你还没有选择！')
+                 return;
+             }
+            this.memberList.splice(this.userIndex,1);
+            this.userIndex = null
         },
         //发送消息按钮
         send(){
-            console.log('你点击了发送按钮')
-            console.log(this.con)
+            if(!this.con){
+                this.$toast('你还没输入短信内容！')
+                return;
+            }
+            
+            //提取选择人员信息中的手机号
+             let userPhone = this.memberList.map(({phone})=>{
+                 return {phone}
+             })
+             //将所有人的手机号转换成字符串保存
+            let arr = [];
+            for(var i=0; i<userPhone.length; i++){
+                arr.push(userPhone[i].phone)
+            }
+            console.log(arr.join())
         },
         //输入框的内容
         content(){
@@ -142,14 +160,17 @@ export default{
         },
         //点击选择每一个人
         check(index,item){
-            this.value = index;
-            console.log(item)
+            this.userIndex = index;
         }
     },
     created() {
 		this.height = (window.innerHeight - 430) + 'px';
 	},
     mounted(){
+        //获取需要发送短信的人员
+        
+        this.memberList = this.$route.params
+
         // 监听窗口改变重置高度
         window.addEventListener('resize', () => {
             this.height = (window.innerHeight - 430) + 'px';

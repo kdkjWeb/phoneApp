@@ -3,6 +3,14 @@
       <div class="title">
           <span class="iconfont icon-fanhui" @click="goBack"></span>
     </div>
+    <!-- {{this.$route.params}} -->
+    <div class="content">
+        <div class="top">
+            <div class="tob_title">{{artice.title}}</div>
+            <span>{{artice.pubTime}}</span>
+        </div>
+        <div>{{artice.content}}</div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +34,26 @@ export {default} from './detailsCtr.js'
         font-size: 30px;
         vertical-align: middle;
         color: #4a57f1;
+    }
+
+    .content{
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    .top{
+        position: relative;
+        padding-bottom: 5px;
+    }
+    .tob_title{
+         width: 70%;
+         color: #3265e4;
+    }
+    .top span{
+        position: absolute;
+        font-size: 14px;
+        right: 0;
+        top: 0;
     }
 </style>
 

@@ -1,7 +1,7 @@
 export default{
     data(){
         return {
-
+            artice: {}
         }
     },
     methods:{
@@ -9,5 +9,8 @@ export default{
         goBack(){
             this.$router.go(-1)
         }
+    },
+    mounted(){
+        this.artice = this.$route.params
     }
 }
