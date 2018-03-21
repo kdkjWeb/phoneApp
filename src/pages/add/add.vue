@@ -19,8 +19,6 @@
                   <div v-for="(item,index) in memberList" :key="index">
                     <div class="tr" @click="check(item,index)">
                         <div class="td">
-                            <!-- <input type="checkbox" checked :value="item.username" v-model="checkedNames"> -->
-                            <!-- <div class="checkBox"></div> -->
                             <span class="iconfont" :class="checkId.indexOf(index)>=0?'icon-yigouxuan':'icon-weigouxuan'"></span>
                         </div>
                         <div class="td">{{item.department}}</div>
@@ -108,6 +106,7 @@ export {default} from './addCtr.js'
     height: 40px;
     align-items: center;
     border-left:1px solid #ddd;
+    word-break: break-all;
     }
     .table .bg-w{
     background: #f6fbff;

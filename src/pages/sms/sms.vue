@@ -182,6 +182,7 @@
     height: 40px;
     align-items: center;
     border-left:1px solid #ddd;
+    word-break: break-all;
     }
     .table .bg-w{
     background: #f6fbff;

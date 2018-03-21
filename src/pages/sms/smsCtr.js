@@ -9,92 +9,6 @@ export default{
             userIndex: null,
             memberList: [],
             isShow: ''
-            /*memberList: [{
-                section: '传媒部部',
-                job: '门管理员',
-                name: '张三部门',
-                phone: '15095982630'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982631'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982632'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982633'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            },{
-                section: '传媒部',
-                job: '员工',
-                name: '张三',
-                phone: '15095982634'
-            }]*/
         }
     },
     methods: {
@@ -131,6 +45,16 @@ export default{
                 arr.push(userPhone[i].phone)
             }
             console.log(arr.join())
+            //调用发短信接口
+            this.$post('message/sendMessage',{
+                message: this.con,
+                receiveList: arr.join()
+            })
+            .then(res=>{
+                console.log(res)
+            },err=>{
+                console.log(err)
+            })
         },
         //输入框的内容
         content(){

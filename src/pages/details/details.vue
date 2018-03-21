@@ -3,13 +3,12 @@
       <div class="title">
           <span class="iconfont icon-fanhui" @click="goBack"></span>
     </div>
-    <!-- {{this.$route.params}} -->
     <div class="content">
         <div class="top">
             <div class="tob_title">{{artice.title}}</div>
             <span>{{artice.pubTime}}</span>
         </div>
-        <div>{{artice.content}}</div>
+        <div v-html="content" ref="contentBox"></div>
     </div>
   </div>
 </template>
