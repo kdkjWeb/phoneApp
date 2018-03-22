@@ -14,6 +14,10 @@ export default{
         //点击确认按钮
         confirm(){
             //console.log(this.user.oldPas,this.user.newPas,this.user.confirmPas)
+            if(!this.user.oldPas || !this.user.newPas || !this.user.confirmPas){
+                this.$toast('密码填写不完整！')
+                return;
+            }
             this.$get('user/updatePwd',{
                 newpwd: this.user.newPas,
                 pwd: this.user.oldPas
@@ -31,9 +35,11 @@ export default{
                 this.$toast('网络异常！')
             })
         },
-        //点击取消按钮
+        //点击清空按钮
         cancel(){
-            console.log('点击了取消按钮')
+            this.user.oldPas = ''
+            this.user.newPas = ''
+            this.user.confirmPas = ''
         }
     }
 }

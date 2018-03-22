@@ -33,9 +33,19 @@ export default{
         var len = this.$refs.contentBox.querySelectorAll("img");
         len.forEach((e)=>{
         img.src = e.src;
-        if(img.width >= this.wid) {
-            e.style.width = "100%";
-        }
+        // if(img.width >= this.wid) {
+        //     e.style.width = "100%";
+        // }
+        var k = setInterval(()=>{
+            if(img.width != 0 ) {
+              if(img.width >= this.wid) {
+                e.style.width = "100%";
+              }else {
+                e.style.width = img.width +"px";
+              }
+              clearInterval(k);
+            }
+          },0);
         });
     }
 }

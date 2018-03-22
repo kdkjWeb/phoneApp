@@ -1,4 +1,4 @@
-
+import {has, getItem , setItem, removeItem} from '@/utils/localStorage'
 export default{
     data(){
         return{
@@ -22,7 +22,14 @@ export default{
                 password: this.user.password
             }).then(res=>{
                 if(res.code == 0){
+                  
+                    //存入localStorage
+					setItem({
+						key: 'type',
+						value: res.data.type
+					})
                     this.$router.push('/index')
+
                 }
                 if(res.code == 500){
                     this.$toast(res.msg)

@@ -4,16 +4,24 @@
           <span class="iconfont icon-xiangzuojiantou"></span>
           办公手机报
       </div>
+      <div class="btn">
+          <div class="file" @click="file" :class="{'active': activeIndex == 0}">文件列表</div>
+          <div class="history" @click="history" :class="{'active': activeIndex == 1}">消息历史</div>
+      </div>
       <div class="broadcast_list" :style="{height:height}" ref="content">
           <div >
               <div class="list" v-for="(item,index) in broadcastList" :key="index" @click="details(item)">
                 <p>{{item.title}}</p>
                 <span>{{item.pubTime}}</span>
-            </div>
+                <p>{{item.message}}</p>
+              </div>
+              <!-- <div class="list" v-for="(item,index) in broadcastList1" :key="index" @click="details(item)" v-if="broadcastList1.length>0">
+                <p>{{item.message}}</p>
+              </div> -->
+              <div class="notice" v-if="broadcastList.length==undefined||broadcastList.length<=0">暂无新闻列表</div>
           </div>
       </div>
-
-      
+          
   </div>
 </template>
 
@@ -61,6 +69,33 @@
         top: 0;
     }
 
-
+    .notice{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: red;
+    }
     
+    .btn{
+        width: 100%;
+        height: 35px;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-around;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .btn div{
+        width: 35%;
+        height: 35px;
+        line-height: 35px;
+        border: 1px solid #4768f3;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+    .active{
+        background-color: #4768f3;
+        color: #fff;
+    }
 </style>

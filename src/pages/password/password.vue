@@ -15,7 +15,7 @@
       </div>
       <div class="row btn">
           <div class="success" @click="confirm">确认</div>
-          <div class="cancel" @click="cancel">取消</div>
+          <div class="cancel" @click="cancel">清空</div>
       </div>
   </div>
 </template>

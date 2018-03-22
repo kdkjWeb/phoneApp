@@ -33,7 +33,10 @@
                     <div class="tr" @click="check(index,item)">
                         <div class="td"><input type="radio" :value="index" v-model="userIndex"></div>
                         <div class="td">{{item.department}}</div>
-                        <div class="td">{{item.type}}</div>
+                        <!-- <div class="td">{{item.type}}</div> -->
+                        <div class="td" v-if="item.type == 0">员工</div>
+                        <div class="td" v-if="item.type == 1">部门管理</div>
+                        <div class="td" v-if="item.type == 2">超级管理</div>
                         <div class="td">{{item.username}}</div>
                         <div class="td">{{item.phone}}</div>
                     </div>
@@ -43,6 +46,45 @@
           </div>
       </div>
 
+            <!-- 选择发送联系人弹框 -->
+      <div class="layer" :style="{height:height1}" v-show="isShow">
+           <div class="tiele1">添加人员</div>
+
+     <!-- 添加人员列表 -->
+      <div class="table">
+          <div class="tr bg-w">
+            <div class="th">选择</div>
+            <div class="th">部门</div>
+            <div class="th ">岗位</div>
+            <div class="th">姓名</div>
+            <div class="th ">手机号</div>
+          </div>
+          <div id="tbody_list1" :style="{height:height2}" ref="contentList">
+              <div>
+                  <div v-for="(item,index) in memberList1" :key="index">
+                    <div class="tr" @click="check1(item,index)">
+                        <div class="td">
+                            <span class="iconfont" :class="checkId.indexOf(index)>=0?'icon-yigouxuan':'icon-weigouxuan'"></span>
+                        </div>
+                        <div class="td">{{item.department}}</div>
+                        <!-- <div class="td">{{item.type}}</div> -->
+                        <div class="td" v-if="item.type == 0">员工</div>
+                        <div class="td" v-if="item.type == 1">部门管理</div>
+                        <div class="td" v-if="item.type == 2">超级管理</div>
+                        <div class="td">{{item.username}}</div>
+                        <div class="td">{{item.phone}}</div>
+                    </div>
+                  </div>
+                  <div class="notice" v-if="memberList1.length<=0">暂无添加人员</div>
+              </div>
+          </div>
+      </div>
+      <!-- 点击按钮 -->
+      <div class="row btn">
+          <div class="success" @click="confirm">添加人员</div>
+          <div class="cancel" @click="cancel" style="color: #4768f3">取消</div>
+      </div>
+      </div>
   </div>
 </template>
 
@@ -55,12 +97,13 @@
     .title{
         position: relative;
         text-align: center;
-        height: 45px;
-        padding-top: 15px;
+        height: 60px;
+        /* padding-top: 15px; */
         background-color: #f5f6f8;
-        line-height: 60px;
+        /* line-height: 60px; */
         font-size: 16px;
         border-bottom: 1px solid #ddd;
+        overflow: hidden;
     }
     .btn{
         width: 100%;
@@ -215,11 +258,58 @@
         /* height: 130px; */
         overflow: hidden;
     }
+    #tbody_list1{
+        width: 100%;
+        overflow: hidden;
+    }
     .notice{
         width: 100%;
         height: 40px;
         line-height: 40px;
         text-align: center;
         color: red;
+    }
+
+
+    /* 选择联系人弹框 */
+    .layer{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100px;
+        background: #f5f6f8;
+    }
+
+    .tiele1{
+      text-align: center;
+      color: #4b6ef0;
+      padding: 15px;
+    }
+
+
+    /* 按钮部分 */
+    .btn{
+        width: 90%;
+        margin: 20px auto;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-around;
+    }
+    .btn div{
+        width: 35%;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+    .success{
+        background-color: #4768f3;
+        color: #fff;
+    }
+    .cancel{
+        border: 1px solid #4768f3;
+        background-color: #f6fbff;
     }
 </style>
